@@ -1,0 +1,57 @@
+<section class="bg-dark" id="signup">
+    <div class="container">
+        <form [formGroup]="signup" (ngSubmit)="signupForm(signup)">
+            <div class="form w-50 m-auto">
+                <div class="row my-3">
+                    <div class="col-md-6">
+                        <input
+                         [ngClass]="{'is-valid': signup.controls['first_name'].status === 'VALID'}"
+                        formControlName="first_name" type="text" placeholder="Enter your Firstname" class="form-control mt-3">
+                        <p *ngIf="signup.controls['first_name']?.errors?.['required'] &&
+                        signup.controls['first_name']?.touched" class="alert alert-danger">You should fill this input</p>
+                        <p *ngIf="signup.controls['first_name']?.errors?.['pattern'] &&
+                        signup.controls['first_name']?.touched" class="alert alert-danger">The name should be at least 3 charechters</p>
+                    </div>
+                    <div class="col-md-6">
+                        <input
+                        [ngClass]="{'is-valid': signup.controls['last_name'].status === 'VALID'}"
+                        formControlName="last_name" type="text" placeholder="Enter your Lastname" class="form-control mt-3">
+                        <p *ngIf="signup.controls['last_name']?.errors?.['required'] &&
+                        signup.controls['last_name']?.touched" class="alert alert-danger">You should fill this input</p>
+                        <p *ngIf="signup.controls['last_name']?.errors?.['pattern'] &&
+                        signup.controls['last_name']?.touched" class="alert alert-danger">The name should be at least 3 charechters</p>
+                    </div>
+                    
+                </div>
+                <input
+                [ngClass]="{'is-valid': signup.controls['email'].status === 'VALID'}"
+                formControlName="email" type="email" placeholder="Enter your Email" class="form-control my-3">
+                <p *ngIf="signup.controls['email']?.errors?.['required'] &&
+                        signup.controls['email']?.touched" class="alert alert-danger">You should fill this input</p>
+                <p *ngIf="signup.controls['email']?.errors?.['email'] &&
+                        signup.controls['email']?.touched" class="alert alert-danger">You should enter a valid email</p>
+                <input
+                [ngClass]="{'is-valid': signup.controls['age'].status === 'VALID'}"
+                formControlName="age" type="number" placeholder="Enter your Age" class="form-control my-3">
+                <p *ngIf="signup.controls['age']?.errors?.['required'] &&
+                        signup.controls['age']?.touched" class="alert alert-danger">You should fill this input</p>
+                <p *ngIf="signup.controls['age']?.errors?.['min'] &&
+                        signup.controls['age']?.touched" class="alert alert-danger">Age must be at least 16 years</p>
+                <p *ngIf="signup.controls['age']?.errors?.['max'] &&
+                        signup.controls['age']?.touched" class="alert alert-danger">Age must be smaller than 65 years</p>
+                <input 
+                [ngClass]="{'is-valid': signup.controls['password'].status === 'VALID'}"
+                formControlName="password" type="password" placeholder="Enter your Password" class="form-control my-3">
+                <p *ngIf="signup.controls['password']?.errors?.['required'] &&
+                        signup.controls['password']?.touched" class="alert alert-danger">You should fill this input</p>
+                <p *ngIf="signup.controls['password']?.errors?.['pattern'] &&
+                        signup.controls['password']?.touched" class="alert alert-danger">Password should be 8 charachters starts with capital charachter and end with at least one number</p>
+                <button [ngStyle]="signup.valid?styleValid:styleInValid" [disabled]="signup.invalid" class="btn btn-info w-100 text-light">
+                   <span *ngIf="!isClicked">Sign Up</span> 
+                   <span *ngIf="isClicked">Waiting ...</span> </button>
+                   <div *ngIf="responseMessage !=''" class="text-center mt-3 alert"
+                   [ngClass]="responseMessage == 'success'?'alert-success':'alert-danger'">{{responseMessage}}</div>
+            </div>
+        </form>
+    </div>
+</section>

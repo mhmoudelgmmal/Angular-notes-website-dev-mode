@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand"><i class="far fa-sticky-note"></i> Notes</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0 d-flex align-items-center">
+                
+                <li *ngIf="!isLogin" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" routerLink="/signup">Sign Up</a>
+                        <a class="dropdown-item" routerLink="/signin">Sign In</a>
+                    </div>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <span class="text-light me-4">Hello {{userInfo.getValue().first_name}}</span>
+                    <span class="text-light pointer" (click)="signoutForm()" routerLink="/login">Logout</span>
+                    
+                </li>
+            </ul>
+            
+        </div>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+#profile{
+    background-color: #666;
+    min-height: 100vh;
+}
+.note{
+    min-height: 200px;
+    width: 200px;
+    background-color: #cfc;
+}
+i{
+    cursor:pointer;
+}
+.point{
+    cursor: pointer;
+}
